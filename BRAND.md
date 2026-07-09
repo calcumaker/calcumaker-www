@@ -26,6 +26,7 @@ The colors reuse the existing emulator language:
 
 - `assets/calcumaker-logo.svg` - primary horizontal lockup for dark backgrounds
 - `assets/calcumaker-logo-light.svg` - horizontal lockup for light backgrounds
+- `assets/calcumaker-mark.png` - active transparent PNG site mark
 - `assets/calcumaker-mark.svg` - square app/icon mark
 - `assets/calcumaker-mark-mono.svg` - one-color PCB silk / engraving mark
 - `assets/calcumaker-logo-sheet.svg` - concept sheet with rationale and variants
@@ -49,21 +50,21 @@ The colors reuse the existing emulator language:
 
 | Asset | Where |
 |---|---|
-| `calcumaker-mark.svg` | nav mark (30px) and hero mark; rasterised to `apple-touch-icon.png` — **contains `16`** |
-| `favicon.svg` | tab icon — **contains `16`** |
+| `calcumaker-mark.png` | active nav mark, hero mark, and PNG favicon — **contains `16`** |
+| `calcumaker-mark.svg` | **not used on the site**: weaker vector trace draft — **contains `16`** |
+| `favicon.svg` | not used on the site; SVG favicon draft — **contains `16`** |
 | `calcumaker-logo.svg` | **not used on the site**: appends `16` to the wordmark (device lockup) |
 | `calcumaker-logo-light.svg` | not used on the site (dark-only); also a device lockup |
 | `calcumaker-mark-mono.svg` | not used on the site; PCB silk / engraving |
 | `calcumaker-logo-sheet.svg` | concept sheet, documentation only |
 
 `assets/apple-touch-icon.png` is generated — `npm run icons` re-renders it from
-`calcumaker-mark.svg`. Don't hand-edit it.
+`calcumaker-mark.png`. Don't hand-edit it.
 
 Two things worth knowing about the assets:
 
-1. **The full mark is reduced for the favicon.** `favicon.svg` keeps the core
-   gold shell and red `16`, but drops the trace and annunciator detail that turns
-   into noise at tab size.
+1. **The active mark is a transparent PNG.** The SVG trace attempts are retained
+   as drafts, but the site uses the original image-model render for now.
 2. **`calcumaker-mark-mono.svg` hardcodes `fill="#111820"`.** Switching it to
    `currentColor` would make it reusable (silk, engraving, inline on any
    background) without editing the file.

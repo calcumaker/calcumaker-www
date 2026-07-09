@@ -15,8 +15,8 @@ hardware would.
 
 ```
 index.html
-assets/  styles.css · main.js · calcumaker-{logo,mark}*.svg · favicon.svg
-         apple-touch-icon.png (generated) · emulator-*.png
+assets/  styles.css · main.js · calcumaker-mark.png · calcumaker-{logo,mark}*.svg
+         favicon.svg · apple-touch-icon.png (generated) · emulator-*.png
 BRAND.md   logo direction + where each asset is used
 ```
 
@@ -57,7 +57,7 @@ using CC for software, and you don't CC-license a logo.
 |---|---|---|
 | **Code** | `index.html` markup/scripts, `assets/main.js`, `assets/styles.css`, `scripts/`, `.github/` | [MIT](LICENSE) |
 | **Content** | prose, the Markdown files, `assets/emulator-*.png` | [CC BY-SA 4.0](LICENSE-CONTENT) |
-| **Brand** | the Calcumaker name and wordmark, `assets/calcumaker-{logo,mark}*.svg`, `assets/favicon.svg`, `assets/apple-touch-icon.png` | **All rights reserved** |
+| **Brand** | the Calcumaker name and wordmark, `assets/calcumaker-mark.png`, `assets/calcumaker-{logo,mark}*.svg`, `assets/favicon.svg`, `assets/apple-touch-icon.png` | **All rights reserved** |
 
 Brand assets are deliberately *not* open-licensed: copyright licences don't grant
 trademark rights, and a freely licensed mark lets anyone imply endorsement. Fork

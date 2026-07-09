@@ -1,6 +1,6 @@
-// Rasterise the brand mark for the contexts that can't take SVG.
-// Apple touch icons must be PNG (no SVG support), so we render one from
-// assets/calcumaker-mark.svg rather than hand-maintaining a second artwork.
+// Rasterise the brand mark for the contexts that need a specific PNG size.
+// The active mark is already a transparent PNG generated from the image-model
+// render; this script only resizes it for Apple touch icon consumers.
 //
 //   npm run icons
 import { chromium } from "playwright";
@@ -10,20 +10,22 @@ import { join } from "node:path";
 const ROOT = new URL("../", import.meta.url).pathname;
 const OUT = join(ROOT, "assets");
 
-// [source svg, output png, px]. Apple renders on its own rounded mask, but a
-// full-bleed background avoids a transparent halo on older iOS.
-const TARGETS = [["calcumaker-mark.svg", "apple-touch-icon.png", 180]];
+// [source image, output png, px].
+const TARGETS = [["calcumaker-mark.png", "apple-touch-icon.png", 180]];
 
 const browser = await chromium.launch();
 for (const [src, out, size] of TARGETS) {
-  const svg = await readFile(join(OUT, src), "utf8");
   const page = await browser.newPage({ viewport: { width: size, height: size } });
+  const srcData = (await readFile(join(OUT, src))).toString("base64");
   await page.setContent(
-    `<body style="margin:0;background:#23262b">
-       <div style="width:${size}px;height:${size}px">${svg}</div>
+    `<body style="margin:0;background:transparent">
+       <div style="width:${size}px;height:${size}px">
+         <img src="data:image/png;base64,${srcData}" style="width:${size}px;height:${size}px;object-fit:contain" />
+       </div>
      </body>`,
   );
-  await page.screenshot({ path: join(OUT, out), omitBackground: false });
+  await page.locator("img").evaluate((img) => img.decode());
+  await page.screenshot({ path: join(OUT, out), omitBackground: true });
   await page.close();
   console.log(`rendered assets/${out} (${size}x${size}) from ${src}`);
 }
