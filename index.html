@@ -3,12 +3,12 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Calcumaker 16 — a programmer's RPN calculator with a stack you can see</title>
-<meta name="description" content="An open-hardware programmer's / technical RPN calculator. HP-16C lineage, real Cherry MX keys, a multi-row 7-segment stack display, and arbitrary-precision math via GNU MP + MPFR. Try the emulator in your browser." />
+<title>Calcumaker — a programmer's RPN calculator with a stack you can see</title>
+<meta name="description" content="Calcumaker is an open-hardware line of programmer's / technical RPN calculators. The first device, Calcumaker 16, carries the HP-16C lineage: real Cherry MX keys, a multi-row 7-segment stack display, and arbitrary-precision math via GNU MP + MPFR. Try the emulator in your browser." />
 
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://calcumaker.co/" />
-<meta property="og:title" content="Calcumaker 16" />
+<meta property="og:title" content="Calcumaker" />
 <meta property="og:description" content="Real keyswitches, a real stack you can see, and answers correct to as many digits as you ask for." />
 <meta property="og:image" content="https://calcumaker.co/assets/emulator-7seg.png" />
 <meta name="twitter:card" content="summary_large_image" />
@@ -25,7 +25,7 @@
   <div class="wrap nav-inner">
     <a class="brand" href="/">
       <img class="brand-mark" src="assets/calcumaker-mark.svg" alt="" width="512" height="512" />
-      <b>CALCUMAKER</b><span>16</span>
+      <b>CALCUMAKER</b>
     </a>
     <nav aria-label="Primary">
       <a href="#features">Features</a>
@@ -42,14 +42,16 @@
   <!-- ---------------------------------------------------------------- hero -->
   <section class="hero">
     <div class="wrap hero-inner">
-      <img class="hero-logo" src="assets/calcumaker-logo.svg" width="1040" height="240"
-           alt="Calcumaker 16 — every base, every digit." />
-      <p class="eyebrow">Open hardware · Rust firmware · Arbitrary precision</p>
+      <img class="hero-mark" src="assets/calcumaker-mark.svg" width="512" height="512"
+           alt="The Calcumaker mark: a seven-segment C inside a hexagon." />
+      <p class="tagline">Every base. Every digit.</p>
       <h1>A programmer's RPN calculator<br /><em>with a stack you can see.</em></h1>
       <p class="lede">
-        Calcumaker 16 carries the HP-16C tradition — hex, octal, binary, bitwise
-        operators, selectable word sizes — and extends it with math that is
-        correct to as many digits as you ask for.
+        Calcumaker is an open-hardware line of programmer's and technical RPN
+        calculators. The first device, <b>Calcumaker&nbsp;16</b>, carries the
+        HP-16C tradition — hex, octal, binary, bitwise operators, selectable word
+        sizes — and extends it with math that is correct to as many digits as you
+        ask for.
       </p>
 
       <!-- Live 7-segment strip: the real segment encoding the hardware uses. -->
@@ -63,9 +65,10 @@
       </div>
 
       <p class="status">
-        <strong>Status:</strong> a work in progress. The calculator engine and the
-        browser emulator run <em>today</em>; the boards are still in bring-up.
-        Nothing is for sale — this is an open project you can read, build and fork.
+        <strong>Status:</strong> a work in progress. The engine and the browser
+        emulator run <em>today</em>; the Calcumaker&nbsp;16 boards are still in
+        bring-up. Nothing is for sale — this is an open project you can read,
+        build and fork.
       </p>
     </div>
   </section>
@@ -120,9 +123,10 @@
   <section id="displays" class="section alt">
     <div class="wrap">
       <h2>Two displays, one connector</h2>
-      <p class="section-lede">The display lives on its own angled PCB. Both modules
-      speak the same protocol, so the calculator doesn't care which one you fit.
-      These are screenshots of the emulator rendering the real segment data.</p>
+      <p class="section-lede">On Calcumaker&nbsp;16 the display lives on its own
+      angled PCB. Both modules speak the same protocol, so the calculator doesn't
+      care which one you fit. These are screenshots of the emulator rendering the
+      real segment data.</p>
 
       <div class="shots">
         <figure>
@@ -144,7 +148,10 @@
   <!-- --------------------------------------------------------------- specs -->
   <section id="specs" class="section">
     <div class="wrap">
-      <h2>Under the hood</h2>
+      <h2>Under the hood — Calcumaker 16</h2>
+      <p class="section-lede">The <b>16</b> names this device, not the line: it's
+      the base-16 / HP-16C heritage. It leaves room for siblings with different
+      key layers and displays.</p>
       <dl class="specs">
         <div><dt>Processor</dt><dd>STM32U575RGT6 — Cortex-M33, 1 MB flash / 768 KB RAM, ultra-low-power</dd></div>
         <div><dt>Firmware</dt><dd>Rust, <code>no_std</code>, async via embassy</dd></div>
@@ -163,11 +170,11 @@
     <div class="wrap narrow">
       <h2>The whole calculator, in your browser</h2>
       <p class="section-lede">
-        Not a reimplementation. The emulator compiles the <em>real</em> engine to
-        WebAssembly — the same Rust core, linked against GNU MP, MPFR and MPC
-        cross-built with wasi-sdk. Key presses go through the same matrix and
-        keymap; the display is painted from the same segment bytes the hardware
-        would push to its drivers. It all runs client-side.
+        Not a reimplementation. The Calcumaker&nbsp;16 emulator compiles the
+        <em>real</em> engine to WebAssembly — the same Rust core, linked against
+        GNU MP, MPFR and MPC cross-built with wasi-sdk. Key presses go through the
+        same matrix and keymap; the display is painted from the same segment bytes
+        the hardware would push to its drivers. It all runs client-side.
       </p>
       <div class="cta">
         <a class="btn primary" href="https://web.calcumaker.co">Open the emulator</a>

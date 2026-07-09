@@ -3,7 +3,7 @@
   "private": true,
   "version": "1.0.0",
   "type": "module",
-  "description": "Marketing site for Calcumaker 16 (calcumaker.co). Static HTML/CSS/JS — no build step.",
+  "description": "Marketing site for Calcumaker (calcumaker.co). Static HTML/CSS/JS — no build step.",
   "scripts": {
     "serve": "python3 -m http.server 8080",
     "lint": "npm run lint:css && npm run lint:js",

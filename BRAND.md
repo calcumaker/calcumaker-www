@@ -1,16 +1,18 @@
-# Calcumaker 16 Brand Direction
+# Calcumaker Brand Direction
 
 ## Logo concept
 
-**Name:** Calcumaker 16
+**Name:** Calcumaker (the brand/line). **Calcumaker 16** is the first device.
 
 **Tagline:** Every base. Every digit.
 
-**Core mark:** a seven-segment `C` next to segmented `16`, framed by a hex shape and captioned `0x10`. The mark ties together the product's three strongest signals from the repos:
+**Core mark:** a precision faceplate badge: a gold angular `C` shell around a
+red seven-segment `16`, with small trace and annunciator accents. The mark ties
+together the product's strongest signals from the repos:
 
 - programmer/RPN calculator lineage
 - base-16 identity
-- real hardware with 7-segment and matrix displays
+- real hardware with 7-segment display, shift legends, and PCB detail
 
 The colors reuse the existing emulator language:
 
@@ -30,12 +32,27 @@ The colors reuse the existing emulator language:
 
 ## Site usage (calcumaker-www)
 
+> ### ⚠ Open issue: the brand assets name the *device*, not the line
+>
+> Per [`NAMING.md`](https://github.com/calcumaker/calcumaker/blob/main/NAMING.md):
+> **Calcumaker** is the brand/line; **Calcumaker 16** is the first device, and
+> `16` is deliberately left free for siblings ("a future Calcumaker 10").
+>
+> But today every asset bakes `16` in: the lockups append a gold `16` to the
+> wordmark, and the **mark's centre is a seven-segment `16`**. That makes them all
+> *device* assets — none of them can represent the line.
+>
+> calcumaker.co markets the **line**, so it uses the mark plus a CSS wordmark and
+> avoids the lockups. **A line mark and a line lockup (no `16`) are still needed.**
+> Until then the site carries a mark that says "16" while the copy says the 16 is
+> only one device.
+
 | Asset | Where |
 |---|---|
-| `calcumaker-logo.svg` | hero lockup (rendered ~480px wide, so the tagline stays legible) |
-| `calcumaker-mark.svg` | nav mark (30px), and rasterised to `apple-touch-icon.png` |
-| `favicon.svg` | tab icon — a **reduction** of the mark (see below) |
-| `calcumaker-logo-light.svg` | not used on the site (dark-only); kept for light contexts |
+| `calcumaker-mark.svg` | nav mark (30px) and hero mark; rasterised to `apple-touch-icon.png` — **contains `16`** |
+| `favicon.svg` | tab icon — **contains `16`** |
+| `calcumaker-logo.svg` | **not used on the site**: appends `16` to the wordmark (device lockup) |
+| `calcumaker-logo-light.svg` | not used on the site (dark-only); also a device lockup |
 | `calcumaker-mark-mono.svg` | not used on the site; PCB silk / engraving |
 | `calcumaker-logo-sheet.svg` | concept sheet, documentation only |
 
@@ -44,10 +61,9 @@ The colors reuse the existing emulator language:
 
 Two things worth knowing about the assets:
 
-1. **The full mark doesn't survive a 16px favicon.** The `0x10` caption and the
-   segmented `16` collapse into noise below ~32px. `favicon.svg` therefore keeps
-   only what reads at tab size — the gold hex and the seven-segment `C` — using
-   the mark's own geometry and palette.
+1. **The full mark is reduced for the favicon.** `favicon.svg` keeps the core
+   gold shell and red `16`, but drops the trace and annunciator detail that turns
+   into noise at tab size.
 2. **`calcumaker-mark-mono.svg` hardcodes `fill="#111820"`.** Switching it to
    `currentColor` would make it reusable (silk, engraving, inline on any
    background) without editing the file.

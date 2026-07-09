@@ -1,5 +1,5 @@
-Calcumaker 16 website — content licence
-=======================================
+Calcumaker website — content licence
+====================================
 
 Copyright (c) 2026 Yann Ramin
 
@@ -15,7 +15,7 @@ NOT covered by this licence:
   * Site code — index.html markup/scripts, assets/main.js, assets/styles.css,
     scripts/, .github/ — which is MIT licensed. See LICENSE.
 
-  * Brand assets — the Calcumaker name, the Calcumaker 16 wordmark, and
+  * Brand assets — the Calcumaker name, the Calcumaker wordmark and device names, and
     assets/calcumaker-logo*.svg, assets/calcumaker-mark*.svg,
     assets/favicon.svg, assets/apple-touch-icon.png. All rights reserved.
     Attribution under CC BY-SA does not grant permission to use the marks, and
@@ -23,7 +23,7 @@ NOT covered by this licence:
 
 Attribution for reuse of content, e.g.:
 
-    "Calcumaker 16" by Yann Ramin (https://calcumaker.co), CC BY-SA 4.0.
+    "Calcumaker" by Yann Ramin (https://calcumaker.co), CC BY-SA 4.0.
 
 -------------------------------------------------------------------------------
 

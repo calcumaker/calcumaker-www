@@ -1,7 +1,12 @@
 # calcumaker-www
 
-The marketing site for **[Calcumaker 16](https://github.com/calcumaker/calcumaker)** —
+The marketing site for **[Calcumaker](https://github.com/calcumaker/calcumaker)** —
 served at [calcumaker.co](https://calcumaker.co).
+
+**Calcumaker** is the brand/line; **Calcumaker 16** is the first device (see
+`NAMING.md` in the engine repo). The site markets the line — `16` appears only in
+copy about that device, never in brand positions (title, `og:title`, nav). Verify
+enforces this.
 
 Plain static HTML / CSS / JS. **No build step**: the repo *is* the deployable
 tree. The hero's seven-segment strip uses the same glyph table and bit layout as

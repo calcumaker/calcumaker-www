@@ -75,22 +75,32 @@ const body = (await page.locator("body").innerText()).toLowerCase();
 ok("states project status", body.includes("work in progress"));
 ok("does not claim it's for sale", body.includes("nothing is for sale"));
 
-// Branding: the mark and lockup must render (SVGs silently fail as empty boxes),
-// and the tagline must survive in the accessible name of the lockup.
+// Branding: the marks must render (SVGs silently fail as empty boxes).
 const brandOk = await page.evaluate(() => {
   const m = document.querySelector(".brand-mark");
-  const l = document.querySelector(".hero-logo");
+  const h = document.querySelector(".hero-mark");
   return {
     markW: m?.naturalWidth ?? 0,
-    logoW: l?.naturalWidth ?? 0,
-    logoAlt: l?.getAttribute("alt") ?? "",
+    heroW: h?.naturalWidth ?? 0,
+    navText: document.querySelector(".brand")?.innerText.trim() ?? "",
     markDecorative: m?.getAttribute("alt") === "", // link text names the brand
   };
 });
 ok(`nav mark renders (${brandOk.markW}px intrinsic)`, brandOk.markW > 0);
-ok(`hero lockup renders (${brandOk.logoW}px intrinsic)`, brandOk.logoW > 0);
-ok("hero lockup alt carries the tagline", /every base/i.test(brandOk.logoAlt));
+ok(`hero mark renders (${brandOk.heroW}px intrinsic)`, brandOk.heroW > 0);
 ok("nav mark is marked decorative", brandOk.markDecorative);
+
+// Naming: this site is for the Calcumaker *line*. "16" names one device, so it
+// must not appear in brand positions (nav, title, og:title) — only in copy about
+// the device. See calcumaker/NAMING.md.
+ok(`nav brand is the line, not the device (${JSON.stringify(brandOk.navText)})`,
+  /calcumaker/i.test(brandOk.navText) && !/16/.test(brandOk.navText));
+ok("<title> names the line, not the device", !/Calcumaker\s*16/i.test(await page.title()));
+ok("og:title names the line",
+  !/16/.test((await page.locator('meta[property="og:title"]').getAttribute("content")) ?? ""));
+ok("brand tagline is present", /every base\.\s*every digit\./i.test(await page.locator(".tagline").innerText()));
+ok("the device is still named in the copy",
+  (await page.locator("main").innerText()).includes("Calcumaker 16"));
 ok("favicon is the brand mark", !!(await page.locator('link[rel="icon"]').getAttribute("href")));
 ok("apple-touch-icon present", !!(await page.locator('link[rel="apple-touch-icon"]').getAttribute("href")));
 

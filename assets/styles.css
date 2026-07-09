@@ -70,7 +70,6 @@ a { color: var(--blue); }
 .brand { display: flex; align-items: center; gap: .55rem; text-decoration: none; color: var(--ink); min-width: 0; }
 .brand-mark { width: 30px; height: 30px; flex: none; }
 .brand b { letter-spacing: .16em; font-size: .95rem; }
-.brand span { color: var(--gold); font-weight: 700; }
 
 .nav nav { display: flex; align-items: center; gap: 1.25rem; }
 .nav nav a { color: var(--ink-dim); text-decoration: none; font-size: .92rem; }
@@ -89,11 +88,19 @@ a { color: var(--blue); }
   border-bottom: 1px solid var(--line);
   text-align: center;
 }
-/* Brand lockup: carries the wordmark + "Every base. Every digit." tagline, so it
-   needs enough width for that caption to stay legible. */
-.hero-logo {
-  width: min(480px, 88%); height: auto;
-  margin: 0 auto clamp(1.5rem, 4vw, 2.2rem);
+/* The mark, not a lockup: `calcumaker-logo.svg` bakes in "16", which names the
+   device — this site is for the Calcumaker line. See BRAND.md. */
+.hero-mark {
+  width: clamp(72px, 9vw, 104px); height: auto;
+  margin: 0 auto clamp(1.1rem, 3vw, 1.6rem);
+}
+
+.tagline {
+  margin: 0 0 1.1rem;
+  font-family: ui-monospace, Menlo, monospace;
+  font-size: clamp(.8rem, 1.4vw, .95rem);
+  letter-spacing: .22em; text-transform: uppercase;
+  color: var(--gold);
 }
 
 .eyebrow {
