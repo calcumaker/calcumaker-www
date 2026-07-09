@@ -44,9 +44,22 @@ Playwright harness, not mocked up.
 
 ## Licence
 
-Copyright © 2026 Yann Ramin.
+Copyright © 2026 Yann Ramin. This repo is split three ways — Creative Commons
+[advises against](https://creativecommons.org/faq/#can-i-apply-a-creative-commons-license-to-software)
+using CC for software, and you don't CC-license a logo.
 
-The site's content and code have **no licence declared yet** — pick one before
-accepting outside contributions. The project itself: firmware
+| | Covers | Licence |
+|---|---|---|
+| **Code** | `index.html` markup/scripts, `assets/main.js`, `assets/styles.css`, `scripts/`, `.github/` | [MIT](LICENSE) |
+| **Content** | prose, the Markdown files, `assets/emulator-*.png` | [CC BY-SA 4.0](LICENSE-CONTENT) |
+| **Brand** | the Calcumaker name and wordmark, `assets/calcumaker-{logo,mark}*.svg`, `assets/favicon.svg`, `assets/apple-touch-icon.png` | **All rights reserved** |
+
+Brand assets are deliberately *not* open-licensed: copyright licences don't grant
+trademark rights, and a freely licensed mark lets anyone imply endorsement. Fork
+the site, keep the code and the words — swap the logo for your own.
+
+The project itself is licensed elsewhere: firmware
 [AGPL-3.0](https://www.gnu.org/licenses/agpl-3.0.html), hardware
-[CERN-OHL-S v2](https://cern-ohl.web.cern.ch/).
+[CERN-OHL-S v2](https://cern-ohl.web.cern.ch/). AGPL is deliberately *not* used
+here — its source-offer obligation is aimed at network services and buys nothing
+on a brochure page.

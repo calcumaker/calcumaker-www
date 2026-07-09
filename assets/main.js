@@ -1,3 +1,6 @@
+// SPDX-License-Identifier: MIT
+// Copyright (c) 2026 Yann Ramin
+//
 // Hero 7-segment strip.
 //
 // The glyph table and bit layout are the ones the firmware actually uses

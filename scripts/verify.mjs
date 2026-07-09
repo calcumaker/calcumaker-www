@@ -31,6 +31,14 @@ const base = `http://127.0.0.1:${server.address().port}/`;
 let fail = 0;
 const ok = (label, cond) => { console.log(`${cond ? "PASS" : "FAIL"}  ${label}`); if (!cond) fail++; };
 
+// Licence files must exist and say what the footer/README claim they say.
+const licence = await readFile(join(ROOT, "LICENSE"), "utf8").catch(() => "");
+const content = await readFile(join(ROOT, "LICENSE-CONTENT"), "utf8").catch(() => "");
+ok("LICENSE is MIT", /MIT License/.test(licence));
+ok("LICENSE-CONTENT is CC BY-SA 4.0", /Attribution-ShareAlike 4\.0 International/.test(content));
+ok("brand assets are carved out of both licences",
+  /all rights reserved/i.test(licence) && /all rights reserved/i.test(content));
+
 const browser = await chromium.launch();
 const page = await browser.newPage({ viewport: { width: 1280, height: 900 }, deviceScaleFactor: 2 });
 const errors = [];
@@ -82,7 +90,9 @@ ok("apple-touch-icon present", !!(await page.locator('link[rel="apple-touch-icon
 const href = (sel) => page.locator(sel).first().getAttribute("href");
 ok("links to the emulator", (await href('a[href="https://web.calcumaker.co"]')) === "https://web.calcumaker.co");
 ok("links to the main repo", !!(await href('a[href*="github.com/calcumaker/calcumaker"]')));
-ok("footer carries copyright", (await page.locator("footer").innerText()).includes("© 2026 Yann Ramin"));
+const footText = await page.locator("footer").innerText();
+ok("footer carries copyright", footText.includes("© 2026 Yann Ramin"));
+ok("footer states the site licence", /MIT/.test(footText) && /BY-SA/.test(footText));
 const ext = await page.locator('a[target="_blank"]').all();
 const rels = await Promise.all(ext.map((a) => a.getAttribute("rel")));
 ok(`all ${ext.length} external links are rel=noopener`, rels.every((r) => (r ?? "").includes("noopener")));
