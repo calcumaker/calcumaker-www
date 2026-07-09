@@ -34,10 +34,18 @@ const ok = (label, cond) => { console.log(`${cond ? "PASS" : "FAIL"}  ${label}`)
 // Licence files must exist and say what the footer/README claim they say.
 const licence = await readFile(join(ROOT, "LICENSE"), "utf8").catch(() => "");
 const content = await readFile(join(ROOT, "LICENSE-CONTENT"), "utf8").catch(() => "");
+const notice = await readFile(join(ROOT, "NOTICE"), "utf8").catch(() => "");
 ok("LICENSE is MIT", /MIT License/.test(licence));
+// Keep LICENSE as the *unmodified* MIT text: appended scope notes make GitHub /
+// SPDX scanners report NOASSERTION instead of MIT. Scope lives in NOTICE.
+ok("LICENSE has no appended scope text (keeps licence detection working)",
+  !/all rights reserved|LICENSE-CONTENT|Scope\./i.test(licence));
 ok("LICENSE-CONTENT is CC BY-SA 4.0", /Attribution-ShareAlike 4\.0 International/.test(content));
-ok("brand assets are carved out of both licences",
-  /all rights reserved/i.test(licence) && /all rights reserved/i.test(content));
+ok("NOTICE carves the brand out of both licences",
+  /all rights reserved/i.test(notice) && /calcumaker-mark\.svg/.test(notice));
+ok("NOTICE names each brand asset that ships",
+  ["calcumaker-logo.svg", "calcumaker-mark.svg", "favicon.svg", "apple-touch-icon.png"]
+    .every((f) => notice.includes(f)));
 
 const browser = await chromium.launch();
 const page = await browser.newPage({ viewport: { width: 1280, height: 900 }, deviceScaleFactor: 2 });

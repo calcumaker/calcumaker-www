@@ -1,0 +1,39 @@
+Calcumaker 16 website — licence scope
+=====================================
+
+Copyright (c) 2026 Yann Ramin
+
+This repository is licensed in three parts. `LICENSE` is kept as the unmodified
+MIT text so automated licence detection (GitHub, SPDX scanners) recognises it;
+the scope and carve-outs live here instead.
+
+1. CODE — MIT (see LICENSE)
+   index.html (markup and inline scripts), assets/main.js, assets/styles.css,
+   scripts/, .github/
+
+2. CONTENT — CC BY-SA 4.0 (see LICENSE-CONTENT)
+   The prose in index.html, the Markdown files (README.md, BRAND.md), and the
+   emulator screenshots (assets/emulator-*.png).
+
+   Attribution for reuse, e.g.:
+     "Calcumaker 16" by Yann Ramin (https://calcumaker.co), CC BY-SA 4.0.
+
+3. BRAND — ALL RIGHTS RESERVED (not licensed by either of the above)
+   The Calcumaker name, the Calcumaker 16 wordmark, and:
+     assets/calcumaker-logo.svg
+     assets/calcumaker-logo-light.svg
+     assets/calcumaker-logo-sheet.svg
+     assets/calcumaker-mark.svg
+     assets/calcumaker-mark-mono.svg
+     assets/favicon.svg
+     assets/apple-touch-icon.png
+
+   Neither the MIT licence nor CC BY-SA grants trademark rights. Attribution
+   under CC BY-SA does not grant permission to use the marks, and nothing in
+   this repository grants permission to imply endorsement by the project.
+
+   Fork the site, keep the code and the words — swap the logo for your own.
+
+The Calcumaker project itself is licensed separately: firmware AGPL-3.0
+(https://www.gnu.org/licenses/agpl-3.0.html), hardware CERN-OHL-S v2
+(https://cern-ohl.web.cern.ch/).

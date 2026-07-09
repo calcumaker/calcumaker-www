@@ -58,6 +58,10 @@ Brand assets are deliberately *not* open-licensed: copyright licences don't gran
 trademark rights, and a freely licensed mark lets anyone imply endorsement. Fork
 the site, keep the code and the words — swap the logo for your own.
 
+Full scope and the per-file carve-out live in [NOTICE](NOTICE). `LICENSE` is kept
+as the *unmodified* MIT text on purpose — appending scope notes to it makes GitHub
+and SPDX scanners report `NOASSERTION` instead of `MIT`.
+
 The project itself is licensed elsewhere: firmware
 [AGPL-3.0](https://www.gnu.org/licenses/agpl-3.0.html), hardware
 [CERN-OHL-S v2](https://cern-ohl.web.cern.ch/). AGPL is deliberately *not* used

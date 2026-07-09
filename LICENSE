@@ -19,19 +19,3 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
-
--------------------------------------------------------------------------------
-
-Scope. This MIT licence covers the SITE CODE only: index.html, assets/main.js,
-assets/styles.css, scripts/, and .github/.
-
-  * Site content (prose, screenshots) is licensed separately under
-    CC BY-SA 4.0 — see LICENSE-CONTENT.
-
-  * Brand assets are NOT licensed by either. The Calcumaker name, the
-    Calcumaker 16 wordmark, and the logo/mark files (assets/calcumaker-logo*.svg,
-    assets/calcumaker-mark*.svg, assets/favicon.svg, assets/apple-touch-icon.png)
-    are reserved — all rights reserved. Nothing here grants trademark rights or
-    permission to imply endorsement.
-
-See README.md for the summary.
