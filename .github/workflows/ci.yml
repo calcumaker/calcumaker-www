@@ -1,0 +1,51 @@
+name: ci
+
+# The site is plain static HTML/CSS/JS — no build step. CI lints it and drives it
+# in a real browser (content, the 7-seg hero, links, images, mobile overflow),
+# then publishes the deployable tree as an artifact.
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  lint-workflows:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: raven-actions/actionlint@v2
+
+  verify:
+    runs-on: ubuntu-latest
+    needs: lint-workflows
+    steps:
+      - uses: actions/checkout@v7
+
+      - uses: actions/setup-node@v6
+        with:
+          node-version: 22
+
+      - name: Install deps
+        run: npm ci
+
+      - name: Lint CSS (Stylelint) + JS (ESLint)
+        run: npm run lint
+
+      - name: Verify in Chromium
+        run: |
+          npx playwright install --with-deps chromium
+          npm run verify
+
+      - name: Upload site tree
+        uses: actions/upload-artifact@v7
+        with:
+          name: site
+          path: |
+            index.html
+            assets/
+          if-no-files-found: error

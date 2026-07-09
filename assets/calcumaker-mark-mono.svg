@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-labelledby="title desc">
+  <title id="title">Calcumaker 16 one-color mark</title>
+  <desc id="desc">A one-color Calcumaker 16 mark for PCB silk, stamps, engraving, and single-color print.</desc>
+  <path d="M256 74 392 148v216L256 438 120 364V148Z" fill="none" stroke="#111820" stroke-width="22" stroke-linejoin="round"/>
+  <g fill="#111820">
+    <rect x="136" y="136" width="128" height="34" rx="13"/>
+    <rect x="102" y="164" width="36" height="92" rx="14"/>
+    <rect x="102" y="274" width="36" height="92" rx="14"/>
+    <rect x="136" y="360" width="128" height="34" rx="13"/>
+    <rect x="301" y="151" width="16" height="68" rx="8"/>
+    <rect x="301" y="239" width="16" height="68" rx="8"/>
+    <rect x="350" y="151" width="64" height="16" rx="8"/>
+    <rect x="332" y="167" width="16" height="68" rx="8"/>
+    <rect x="350" y="225" width="64" height="16" rx="8"/>
+    <rect x="332" y="241" width="16" height="68" rx="8"/>
+    <rect x="414" y="241" width="16" height="68" rx="8"/>
+    <rect x="350" y="309" width="64" height="16" rx="8"/>
+  </g>
+</svg>

@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-labelledby="title desc">
+  <title id="title">Calcumaker 16 mark</title>
+  <desc id="desc">A compact Calcumaker 16 mark with a seven-segment C and base-16 numerals.</desc>
+  <defs>
+    <filter id="soft-glow" x="-40%" y="-40%" width="180%" height="180%" color-interpolation-filters="sRGB">
+      <feGaussianBlur stdDeviation="5" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <rect x="34" y="34" width="444" height="444" rx="92" fill="#23262b"/>
+  <rect x="34" y="34" width="444" height="444" rx="92" fill="none" stroke="#0b0d10" stroke-width="18"/>
+  <path d="M256 74 392 148v216L256 438 120 364V148Z" fill="none" stroke="#f0c25a" stroke-width="18" stroke-linejoin="round"/>
+
+  <g fill="#ff3b30" filter="url(#soft-glow)">
+    <rect x="136" y="136" width="128" height="34" rx="13"/>
+    <rect x="102" y="164" width="36" height="92" rx="14"/>
+    <rect x="102" y="274" width="36" height="92" rx="14"/>
+    <rect x="136" y="360" width="128" height="34" rx="13"/>
+  </g>
+
+  <g fill="#f0c25a">
+    <rect x="301" y="151" width="16" height="68" rx="8"/>
+    <rect x="301" y="239" width="16" height="68" rx="8"/>
+
+    <rect x="350" y="151" width="64" height="16" rx="8"/>
+    <rect x="332" y="167" width="16" height="68" rx="8"/>
+    <rect x="350" y="225" width="64" height="16" rx="8"/>
+    <rect x="332" y="241" width="16" height="68" rx="8"/>
+    <rect x="414" y="241" width="16" height="68" rx="8"/>
+    <rect x="350" y="309" width="64" height="16" rx="8"/>
+  </g>
+
+  <text x="256" y="424" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="30" font-weight="800" letter-spacing="3" fill="#e7e9ee">0x10</text>
+</svg>

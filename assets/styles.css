@@ -1,0 +1,220 @@
+/* Calcumaker 16 — marketing site.
+   Palette lifted from the device itself: dark anodised case, gold `f` shift,
+   blue `g` shift, red LED segments. */
+
+:root {
+  --bg: #0c0d10;
+  --bg-alt: #101216;
+  --case: #23262b;
+  --case-edge: #14161a;
+  --line: #262a31;
+  --ink: #e7e9ee;
+  --ink-dim: #9aa1ad;
+  --ink-faint: #767d89;
+  --gold: #f0c25a;
+  --blue: #6ea8ff;
+  --led: #ff3b30;
+  --radius: 14px;
+  --wrap: 1120px;
+
+  color-scheme: dark;
+  font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  font-size: 16px;
+}
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+img { max-width: 100%; height: auto; display: block; }
+
+a { color: var(--blue); }
+
+.wrap { width: min(var(--wrap), 100% - 2.5rem); margin-inline: auto; }
+.wrap.narrow { max-width: 760px; }
+
+.skip {
+  position: absolute; left: -9999px;
+  background: var(--gold); color: #201a08; padding: .6rem 1rem; border-radius: 8px;
+}
+.skip:focus { left: 1rem; top: 1rem; z-index: 20; }
+
+:focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; border-radius: 4px; }
+
+/* ---- nav ---------------------------------------------------------------- */
+.nav {
+  position: sticky; top: 0; z-index: 10;
+  background: rgb(12 13 16 / 82%);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--line);
+}
+.nav-inner { display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding: .85rem 0; }
+
+.brand { display: flex; align-items: center; gap: .55rem; text-decoration: none; color: var(--ink); }
+.brand-mark { width: 30px; height: 30px; flex: none; }
+.brand b { letter-spacing: .16em; font-size: .95rem; }
+.brand span { color: var(--gold); font-weight: 700; }
+
+.nav nav { display: flex; align-items: center; gap: 1.25rem; }
+.nav nav a { color: var(--ink-dim); text-decoration: none; font-size: .92rem; }
+.nav nav a:hover { color: var(--ink); }
+.nav nav a.ghost {
+  border: 1px solid var(--line); padding: .35rem .8rem; border-radius: 8px; color: var(--ink);
+}
+.nav nav a.ghost:hover { border-color: var(--gold); color: var(--gold); }
+
+/* ---- hero --------------------------------------------------------------- */
+.hero {
+  padding: clamp(3rem, 9vw, 6.5rem) 0 clamp(2.5rem, 6vw, 4.5rem);
+  background:
+    radial-gradient(80% 120% at 50% -10%, #23262b 0%, transparent 60%),
+    linear-gradient(180deg, #101216, var(--bg));
+  border-bottom: 1px solid var(--line);
+  text-align: center;
+}
+/* Brand lockup: carries the wordmark + "Every base. Every digit." tagline, so it
+   needs enough width for that caption to stay legible. */
+.hero-logo {
+  width: min(480px, 88%); height: auto;
+  margin: 0 auto clamp(1.5rem, 4vw, 2.2rem);
+}
+
+.eyebrow {
+  margin: 0 0 1rem; font-size: .78rem; letter-spacing: .18em; text-transform: uppercase;
+  color: var(--ink-faint);
+}
+h1 {
+  margin: 0 0 1.1rem;
+  font-size: clamp(2rem, 5.4vw, 3.6rem);
+  line-height: 1.1; letter-spacing: -.02em; font-weight: 800;
+}
+h1 em { font-style: normal; color: var(--gold); }
+
+.lede {
+  margin: 0 auto; max-width: 62ch; color: var(--ink-dim);
+  font-size: clamp(1rem, 1.6vw, 1.15rem);
+}
+
+/* the 7-seg strip */
+.seg-strip {
+  margin: clamp(2rem, 5vw, 3.2rem) auto clamp(1.8rem, 4vw, 2.6rem);
+  max-width: 900px;
+  background: #1a0605;
+  border: 1px solid #000;
+  border-radius: var(--radius);
+  padding: clamp(.8rem, 2.5vw, 1.5rem);
+  box-shadow: inset 0 3px 24px rgb(0 0 0 / 70%);
+}
+#segdisplay { width: 100%; height: auto; display: block; }
+.seg { fill: rgb(255 59 48 / 7%); }
+.seg.on { fill: var(--led); filter: drop-shadow(0 0 6px var(--led)); }
+
+.cta { display: flex; flex-wrap: wrap; gap: .75rem; justify-content: center; }
+.btn {
+  display: inline-block; text-decoration: none;
+  border: 1px solid var(--line); border-radius: 10px;
+  padding: .7rem 1.3rem; font-weight: 600; font-size: .95rem;
+  color: var(--ink); background: #1b1e23;
+  transition: transform .06s ease, border-color .12s ease;
+}
+.btn:hover { border-color: #3a404a; transform: translateY(-1px); }
+.btn.primary { background: var(--gold); color: #201a08; border-color: var(--gold); }
+.btn.primary:hover { background: #ffd170; }
+
+.status {
+  margin: clamp(2rem, 5vw, 3rem) auto 0; max-width: 60ch;
+  font-size: .88rem; color: var(--ink-faint);
+  border: 1px dashed var(--line); border-radius: 10px; padding: .8rem 1rem;
+}
+.status strong { color: var(--ink-dim); }
+
+/* ---- sections ----------------------------------------------------------- */
+.section { padding: clamp(3rem, 8vw, 5.5rem) 0; }
+.section.alt { background: var(--bg-alt); border-block: 1px solid var(--line); }
+
+h2 {
+  margin: 0 0 1rem; font-size: clamp(1.5rem, 3.2vw, 2.1rem);
+  letter-spacing: -.01em; font-weight: 750;
+}
+.section-lede { margin: 0 0 2.2rem; color: var(--ink-dim); max-width: 68ch; }
+
+.grid {
+  display: grid; gap: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(min(280px, 100%), 1fr));
+  margin-top: 2rem;
+}
+.card {
+  background: linear-gradient(180deg, #1a1d22, #15171b);
+  border: 1px solid var(--line); border-radius: var(--radius);
+  padding: 1.4rem 1.4rem 1.5rem;
+}
+.card h3 { margin: 0 0 .5rem; font-size: 1.05rem; color: var(--gold); }
+.card p { margin: 0; color: var(--ink-dim); font-size: .94rem; }
+.card b { color: var(--ink); font-weight: 650; }
+
+/* ---- displays ----------------------------------------------------------- */
+.shots { display: grid; gap: 1.5rem; grid-template-columns: repeat(auto-fit, minmax(min(320px, 100%), 1fr)); }
+.shots figure { margin: 0; }
+.shots img {
+  border-radius: var(--radius); border: 1px solid #000;
+  box-shadow: 0 18px 44px rgb(0 0 0 / 55%);
+}
+.shots figcaption { margin-top: .85rem; font-size: .9rem; color: var(--ink-faint); }
+.shots figcaption b { color: var(--ink); }
+
+/* ---- specs -------------------------------------------------------------- */
+.specs { margin: 2rem 0 0; display: grid; gap: 0; }
+.specs > div {
+  display: grid; grid-template-columns: 200px 1fr; gap: 1.5rem;
+  padding: .95rem 0; border-top: 1px solid var(--line);
+}
+.specs > div:last-child { border-bottom: 1px solid var(--line); }
+.specs dt { color: var(--ink-faint); font-size: .85rem; letter-spacing: .06em; text-transform: uppercase; }
+.specs dd { margin: 0; color: var(--ink-dim); }
+.specs code {
+  font-family: ui-monospace, Menlo, monospace; font-size: .88em;
+  background: rgb(0 0 0 / 35%); padding: .1em .4em; border-radius: 4px; color: var(--gold);
+}
+
+/* ---- repos -------------------------------------------------------------- */
+.repos { display: grid; gap: 1rem; grid-template-columns: repeat(auto-fit, minmax(min(240px, 100%), 1fr)); margin-top: 2rem; }
+.repo {
+  display: flex; flex-direction: column; gap: .25rem; text-decoration: none;
+  border: 1px solid var(--line); border-radius: var(--radius); padding: 1.1rem 1.2rem;
+  background: #15171b; color: var(--ink);
+}
+.repo:hover { border-color: var(--gold); }
+.repo b { font-family: ui-monospace, Menlo, monospace; color: var(--gold); font-weight: 600; }
+.repo span { color: var(--ink-faint); font-size: .88rem; }
+
+/* ---- footer ------------------------------------------------------------- */
+.foot { border-top: 1px solid var(--line); padding: 2rem 0; background: var(--case-edge); }
+.foot-inner {
+  display: flex; flex-wrap: wrap; gap: .6rem 1.4rem;
+  align-items: center; justify-content: space-between;
+  font-size: .86rem; color: var(--ink-faint);
+}
+.foot nav { display: flex; flex-wrap: wrap; gap: .6rem 1.2rem; }
+.foot a { color: var(--ink-dim); text-decoration: none; }
+.foot a:hover { color: var(--gold); text-decoration: underline; }
+
+/* ---- responsive --------------------------------------------------------- */
+@media (max-width: 720px) {
+  .nav nav { gap: .85rem; }
+  .nav nav a:not(.ghost) { display: none; }   /* keep the bar clean on phones */
+  .specs > div { grid-template-columns: 1fr; gap: .2rem; }
+  .foot-inner { flex-direction: column; align-items: flex-start; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  * { transition: none !important; animation: none !important; }
+}

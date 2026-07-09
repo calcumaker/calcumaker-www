@@ -1,0 +1,213 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Calcumaker 16 — a programmer's RPN calculator with a stack you can see</title>
+<meta name="description" content="An open-hardware programmer's / technical RPN calculator. HP-16C lineage, real Cherry MX keys, a multi-row 7-segment stack display, and arbitrary-precision math via GNU MP + MPFR. Try the emulator in your browser." />
+
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://calcumaker.co/" />
+<meta property="og:title" content="Calcumaker 16" />
+<meta property="og:description" content="Real keyswitches, a real stack you can see, and answers correct to as many digits as you ask for." />
+<meta property="og:image" content="https://calcumaker.co/assets/emulator-7seg.png" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="theme-color" content="#14161a" />
+
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png" />
+<link rel="stylesheet" href="assets/styles.css" />
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="nav">
+  <div class="wrap nav-inner">
+    <a class="brand" href="/">
+      <img class="brand-mark" src="assets/calcumaker-mark.svg" alt="" width="512" height="512" />
+      <b>CALCUMAKER</b><span>16</span>
+    </a>
+    <nav aria-label="Primary">
+      <a href="#features">Features</a>
+      <a href="#displays">Displays</a>
+      <a href="#specs">Specs</a>
+      <a href="#emulator">Emulator</a>
+      <a class="ghost" href="https://github.com/calcumaker/calcumaker" target="_blank" rel="noopener noreferrer">GitHub</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+
+  <!-- ---------------------------------------------------------------- hero -->
+  <section class="hero">
+    <div class="wrap hero-inner">
+      <img class="hero-logo" src="assets/calcumaker-logo.svg" width="1040" height="240"
+           alt="Calcumaker 16 — every base, every digit." />
+      <p class="eyebrow">Open hardware · Rust firmware · Arbitrary precision</p>
+      <h1>A programmer's RPN calculator<br /><em>with a stack you can see.</em></h1>
+      <p class="lede">
+        Calcumaker 16 carries the HP-16C tradition — hex, octal, binary, bitwise
+        operators, selectable word sizes — and extends it with math that is
+        correct to as many digits as you ask for.
+      </p>
+
+      <!-- Live 7-segment strip: the real segment encoding the hardware uses. -->
+      <div class="seg-strip" role="img" aria-label="A 16-digit seven-segment display cycling through example values such as DEADBEEF and 3.14159265">
+        <svg id="segdisplay" viewBox="0 0 1792 180" preserveAspectRatio="xMidYMid meet" aria-hidden="true"></svg>
+      </div>
+
+      <div class="cta">
+        <a class="btn primary" href="https://web.calcumaker.co">Try it in your browser</a>
+        <a class="btn" href="https://github.com/calcumaker/calcumaker" target="_blank" rel="noopener noreferrer">View the source</a>
+      </div>
+
+      <p class="status">
+        <strong>Status:</strong> a work in progress. The calculator engine and the
+        browser emulator run <em>today</em>; the boards are still in bring-up.
+        Nothing is for sale — this is an open project you can read, build and fork.
+      </p>
+    </div>
+  </section>
+
+  <!-- ------------------------------------------------------------ features -->
+  <section id="features" class="section">
+    <div class="wrap">
+      <h2>What makes it different</h2>
+      <div class="grid">
+        <article class="card">
+          <h3>A programmer's core</h3>
+          <p>HEX / DEC / OCT / BIN entry, bitwise and shift/rotate operators,
+          selectable word size, and two's-complement, one's-complement or
+          unsigned integer modes. The HP-16C idea, done properly.</p>
+        </article>
+        <article class="card">
+          <h3>Arbitrary precision, no fallback</h3>
+          <p><b>GNU MP</b> for unbounded exact integers. <b>MPFR</b> for
+          correctly-rounded floating point and transcendentals. <b>MPC</b> for
+          complex numbers. One numeric path — the answer doesn't change depending
+          on how you got there.</p>
+        </article>
+        <article class="card">
+          <h3>The stack, on glass</h3>
+          <p>Three rows of sixteen real 7-segment digits show the top of the RPN
+          stack at once, on their own angled board. No menu-diving to see what
+          you're operating on.</p>
+        </article>
+        <article class="card">
+          <h3>Swap the display</h3>
+          <p>An alternate <b>96 × 24 RGB dot-matrix</b> module — 2,304 addressable
+          LEDs driven by an RP2040 — drops onto the same connector. Full
+          alphanumerics, scrolling and colour the 7-segment can't do.</p>
+        </article>
+        <article class="card">
+          <h3>Keys you want to press</h3>
+          <p>Fifty full-size <b>Cherry MX</b> switches in a wide 5 × 10 layout,
+          per-key diodes, annunciator LEDs, and a dedicated STM32G0 scanner so the
+          matrix never crosses the board stack.</p>
+        </article>
+        <article class="card">
+          <h3>Four personalities</h3>
+          <p>16C, 15C, SCI and FIN. One engine, different key layers and display
+          conventions — chosen at runtime, printed on the keycaps in gold and
+          blue.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ------------------------------------------------------------ displays -->
+  <section id="displays" class="section alt">
+    <div class="wrap">
+      <h2>Two displays, one connector</h2>
+      <p class="section-lede">The display lives on its own angled PCB. Both modules
+      speak the same protocol, so the calculator doesn't care which one you fit.
+      These are screenshots of the emulator rendering the real segment data.</p>
+
+      <div class="shots">
+        <figure>
+          <img src="assets/emulator-7seg.png" width="1904" height="1900" loading="lazy" decoding="async"
+               alt="The Calcumaker 16 emulator showing DEADBEEF on a red LED seven-segment display in hex mode, above a full Cherry MX keypad." />
+          <figcaption><b>7-segment</b> — 3 × 16 digits, driven by three TM1640s.
+          Red, green or amber LED, cyan VFD, or grey LCD skins.</figcaption>
+        </figure>
+        <figure>
+          <img src="assets/emulator-matrix.png" width="1904" height="1928" loading="lazy" decoding="async"
+               alt="The same emulator switched to the RGB dot-matrix module, rendering a value as glowing coloured LED dots." />
+          <figcaption><b>RGB dot-matrix</b> — 96 × 24 pixels, 2,304 WS2812s and a
+          5 × 7 font, rendered pixel-for-pixel as the firmware would.</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- --------------------------------------------------------------- specs -->
+  <section id="specs" class="section">
+    <div class="wrap">
+      <h2>Under the hood</h2>
+      <dl class="specs">
+        <div><dt>Processor</dt><dd>STM32U575RGT6 — Cortex-M33, 1 MB flash / 768 KB RAM, ultra-low-power</dd></div>
+        <div><dt>Firmware</dt><dd>Rust, <code>no_std</code>, async via embassy</dd></div>
+        <div><dt>Math</dt><dd>GNU MP + MPFR + MPC, cross-built for the target — a single numeric path</dd></div>
+        <div><dt>Main display</dt><dd>3 rows × 16 digits · 48 × FJ5161AH 0.56″ · 3 × TM1640</dd></div>
+        <div><dt>Alt display</dt><dd>96 × 24 RGB · 2,304 × XL-1010 (WS2812) · RP2040 with PIO</dd></div>
+        <div><dt>Keyboard</dt><dd>50 × Cherry MX, 5 × 10 matrix, STM32G0 scanner</dd></div>
+        <div><dt>Power</dt><dd>1S Li-ion, USB-C charging, buck-boost 3V3 rail + gated 5V display rail</dd></div>
+        <div><dt>Boards</dt><dd>Three-board KiCad 10 stack: MCU/PSU, keyboard, angled display</dd></div>
+      </dl>
+    </div>
+  </section>
+
+  <!-- ------------------------------------------------------------ emulator -->
+  <section id="emulator" class="section alt">
+    <div class="wrap narrow">
+      <h2>The whole calculator, in your browser</h2>
+      <p class="section-lede">
+        Not a reimplementation. The emulator compiles the <em>real</em> engine to
+        WebAssembly — the same Rust core, linked against GNU MP, MPFR and MPC
+        cross-built with wasi-sdk. Key presses go through the same matrix and
+        keymap; the display is painted from the same segment bytes the hardware
+        would push to its drivers. It all runs client-side.
+      </p>
+      <div class="cta">
+        <a class="btn primary" href="https://web.calcumaker.co">Open the emulator</a>
+        <a class="btn" href="https://github.com/calcumaker/calcumaker-web" target="_blank" rel="noopener noreferrer">calcumaker-web source</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ---------------------------------------------------------------- open -->
+  <section class="section">
+    <div class="wrap narrow">
+      <h2>Open, and meant to stay that way</h2>
+      <p class="section-lede">
+        The firmware is <b>AGPL-3.0</b> — compatible with the LGPLv3 libraries it
+        depends on. The hardware is <b>CERN-OHL-S v2</b>, strongly reciprocal, to
+        match. Schematics are generated from data manifests and live in the repo
+        alongside the engine, the emulator and the board firmware.
+      </p>
+      <div class="repos">
+        <a class="repo" href="https://github.com/calcumaker/calcumaker" target="_blank" rel="noopener noreferrer">
+          <b>calcumaker</b><span>Hardware, firmware, engine</span></a>
+        <a class="repo" href="https://github.com/calcumaker/calcumaker-web" target="_blank" rel="noopener noreferrer">
+          <b>calcumaker-web</b><span>The browser emulator</span></a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="foot">
+  <div class="wrap foot-inner">
+    <span>© 2026 Yann Ramin</span>
+    <nav aria-label="Footer">
+      <a href="https://calcumaker.co">calcumaker.co</a>
+      <a href="https://github.com/calcumaker" target="_blank" rel="noopener noreferrer">GitHub</a>
+      <a href="https://www.gnu.org/licenses/agpl-3.0.html" target="_blank" rel="noopener noreferrer">Firmware: AGPL-3.0</a>
+      <a href="https://cern-ohl.web.cern.ch/" target="_blank" rel="noopener noreferrer">Hardware: CERN-OHL-S v2</a>
+    </nav>
+  </div>
+</footer>
+
+<script src="assets/main.js" type="module"></script>
+</body>
+</html>
