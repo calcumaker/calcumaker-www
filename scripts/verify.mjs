@@ -44,7 +44,7 @@ ok("LICENSE-CONTENT is CC BY-SA 4.0", /Attribution-ShareAlike 4\.0 International
 ok("NOTICE carves the brand out of both licences",
   /all rights reserved/i.test(notice) && /calcumaker-mark\.svg/.test(notice));
 ok("NOTICE names each brand asset that ships",
-  ["calcumaker-logo.svg", "calcumaker-mark.svg", "favicon.svg", "apple-touch-icon.png"]
+  ["calcumaker-logo.svg", "calcumaker-mark.png", "calcumaker-mark.svg", "favicon.svg", "apple-touch-icon.png"]
     .every((f) => notice.includes(f)));
 
 const browser = await chromium.launch();

@@ -1,9 +1,9 @@
 # Calcumaker Logo Concept
 
-This branch adds the original image-model render for review alongside the
-current SVG brand assets. It is concept art, not a production-ready logo file.
+This branch uses the original image-model render as the active site mark while
+we avoid the weaker SVG trace attempts. The PNG is transparent around the mark.
 
-![Calcumaker logo concept](assets/concepts/calcumaker-logo-concept-ai.png)
+![Calcumaker logo concept](assets/calcumaker-mark.png)
 
 ## Prompt Summary
 
