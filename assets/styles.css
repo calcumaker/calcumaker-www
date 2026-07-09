@@ -56,9 +56,15 @@ a { color: var(--blue); }
   backdrop-filter: blur(10px);
   border-bottom: 1px solid var(--line);
 }
-.nav-inner { display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding: .85rem 0; }
+/* Wrap rather than overflow: the brand + GitHub button don't fit a 320px phone,
+   and font metrics differ between platforms — this overflowed only on CI's
+   Chromium. Wrapping is metric-agnostic; min-width:0 lets children shrink. */
+.nav-inner {
+  display: flex; align-items: center; justify-content: space-between;
+  flex-wrap: wrap; gap: .5rem 1rem; padding: .85rem 0; min-width: 0;
+}
 
-.brand { display: flex; align-items: center; gap: .55rem; text-decoration: none; color: var(--ink); }
+.brand { display: flex; align-items: center; gap: .55rem; text-decoration: none; color: var(--ink); min-width: 0; }
 .brand-mark { width: 30px; height: 30px; flex: none; }
 .brand b { letter-spacing: .16em; font-size: .95rem; }
 .brand span { color: var(--gold); font-weight: 700; }

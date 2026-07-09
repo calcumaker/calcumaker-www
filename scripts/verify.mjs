@@ -117,14 +117,21 @@ await page.evaluate(() => window.scrollTo(0, 0));
 await mkdir(SHOTS, { recursive: true });
 await page.screenshot({ path: join(SHOTS, "desktop.png"), fullPage: true });
 
-// Responsive: no horizontal overflow on phones.
+// Responsive: no horizontal overflow on phones, plus the nav fits its container.
+// Note this ran green locally while failing on CI: font metrics differ per
+// platform, and the nav was only ~6px over. Trust CI's run, not just this one.
 for (const w of [320, 390]) {
   const mp = await browser.newPage({ viewport: { width: w, height: 844 }, deviceScaleFactor: 2 });
   await mp.goto(base, { waitUntil: "networkidle" });
-  const { sw, iw } = await mp.evaluate(() => ({
-    sw: document.documentElement.scrollWidth, iw: window.innerWidth,
-  }));
-  ok(`no horizontal overflow at ${w}px (${sw} <= ${iw})`, sw <= iw);
+  const m = await mp.evaluate(() => {
+    const n = document.querySelector(".nav-inner");
+    return {
+      sw: document.documentElement.scrollWidth, iw: window.innerWidth,
+      navSw: n.scrollWidth, navCw: n.clientWidth,
+    };
+  });
+  ok(`no horizontal overflow at ${w}px (${m.sw} <= ${m.iw})`, m.sw <= m.iw);
+  ok(`nav content fits its container at ${w}px (${m.navSw} <= ${m.navCw})`, m.navSw <= m.navCw);
   if (w === 390) await mp.screenshot({ path: join(SHOTS, "mobile.png"), fullPage: true });
   await mp.close();
 }
